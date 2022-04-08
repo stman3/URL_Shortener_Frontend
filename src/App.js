@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from "react"
+import UrlForm from './componet/UrlForm'
+import URL from './service/create'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+
+
+
+
+
+
+
+
+const App = () => {
+  const [newUrl,setNewUrl] = useState('')
+  const [sortUrl,setsortUrl] = useState('')
+
+  const handleUrlChange = (event)=>{
+    console.log(`Url: ${event.target.value}`)
+    setNewUrl(event.target.value)
+  }
+  const NewShortURL = (event)=>{
+    event.preventDefault()
+    URL.create(newUrl)
+    .then(returnedUrl=>{
+      setsortUrl(returnedUrl)
+      
+    })
+  }
+  console.log(`short Url is ${sortUrl}`)
+  return(
+    <div>
+    <p>Hello world</p>
+    <UrlForm onSubmit={NewShortURL} newUrl={newUrl} handleUrlChange={handleUrlChange}/>
+  </div>
+  )
+  }
+
+export default App
