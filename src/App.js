@@ -1,6 +1,8 @@
-import React,{useState} from "react"
+import React, { useState } from "react"
 import UrlForm from './componet/UrlForm'
-import URL from './service/create'
+import Header from "./componet/Header"
+import { createNewLink } from './service/URLService'
+import './componet/global.css'
 
 
 
@@ -12,28 +14,25 @@ import URL from './service/create'
 
 
 const App = () => {
-  const [newUrl,setNewUrl] = useState('')
-  const [sortUrl,setsortUrl] = useState('')
+  const [newUrl, setNewUrl] = useState('')
+  const [sortUrl, setsortUrl] = useState('')
 
-  const handleUrlChange = (event)=>{
-    console.log(`Url: ${event.target.value}`)
+  const handleUrlChange = (event) => {
     setNewUrl(event.target.value)
   }
-  const NewShortURL = (event)=>{
+  const NewShortURL = async (event) => {
     event.preventDefault()
-    URL.create(newUrl)
-    .then(returnedUrl=>{
-      setsortUrl(returnedUrl)
-      
-    })
+    const response = await createNewLink(newUrl)
+    setsortUrl(response)
   }
-  console.log(`short Url is ${sortUrl}`)
-  return(
-    <div>
-    <p>Hello world</p>
-    <UrlForm onSubmit={NewShortURL} newUrl={newUrl} handleUrlChange={handleUrlChange}/>
-  </div>
+  console.log("sort url:"+sortUrl.shortUrl)
+  return (
+    
+    <div className="app">
+      <Header/>
+      <UrlForm NewShortURL={NewShortURL} newUrl={newUrl} handleUrlChange={handleUrlChange} />
+    </div>
   )
-  }
+}
 
 export default App
