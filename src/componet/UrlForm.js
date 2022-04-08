@@ -8,11 +8,13 @@ const UrlForm = (props) => {
     return (
         <form className="UrlForm" onSubmit={props.NewShortURL}>
             <h2>Enter The URL</h2>
+            <div className="inputU">
             <div>
-                URL: <input value={props.newUrl} onChange={props.handleUrlChange} />
+              <input value={props.newUrl} onChange={props.handleUrlChange} placeholder={'Enter your link'} />
             </div>
             <div>
-                <button>submit</button>
+                <button className="button-Shotent">Shorten</button>
+            </div>
             </div>
         </form>
     )

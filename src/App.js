@@ -3,6 +3,9 @@ import UrlForm from './componet/UrlForm'
 import Header from "./componet/Header"
 import { createNewLink } from './service/URLService'
 import './componet/global.css'
+import Footer from "./componet/Footer"
+import Result from './componet/Result'
+
 
 
 
@@ -25,12 +28,13 @@ const App = () => {
     const response = await createNewLink(newUrl)
     setsortUrl(response)
   }
-  console.log("sort url:"+sortUrl.shortUrl)
   return (
     
     <div className="app">
       <Header/>
       <UrlForm NewShortURL={NewShortURL} newUrl={newUrl} handleUrlChange={handleUrlChange} />
+      <Result sortUrl={sortUrl}/>
+      <Footer/>
     </div>
   )
 }

@@ -1,10 +1,40 @@
 .UrlForm{
    justify-self: center;
-
+   display:grid;
 }
+
+
+
+
+
 
 .app{
     display: grid;
     width: 100%;
     
+}
+
+.button-Shotent{
+    background-color: #274287;
+    border: none;
+    border-radius: 6px;
+}
+
+.button-Shotent:hover{
+    background-color: #2a5bd7;
+    transition: 0.7s;
+}
+.button-Shotent:focus{
+    outline-style:solid;
+    box-shadow: 0 0 0 3px white;
+  
+}
+.inputU{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5%;
+}
+
+.Footer{
+    justify-self: start;
 }
