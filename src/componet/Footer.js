@@ -10,7 +10,7 @@ const Footer =()=>{
 
     return(
         <div className="Footer">
-            <img src="../imag/GitHub-Mark.jpg" alt="GitHub img"/>
+    
         </div>
     )
 }
